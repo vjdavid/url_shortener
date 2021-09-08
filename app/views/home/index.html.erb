@@ -1,7 +1,9 @@
 <h1>Short Url</h1>
 
-<%= form_with url: 'parse_url', method: :post do |form| %>
-  <%= form.label :string_url, 'Please insert the url:' %>
-  <%= form.url_field :string_url %>
+<%= form_with url: '/shortened_urls' do |form| %>
+  <%= form.label :full_url, 'Please insert the url:' %>
+  <%= form.url_field :full_url %>
   <%= form.submit 'Short Url' %>
 <% end %>
+
+<%= link_to 'Generated Urls', shortened_urls_path %>
