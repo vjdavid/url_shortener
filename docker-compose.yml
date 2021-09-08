@@ -8,6 +8,7 @@ services:
       - .:/usr/src/app/
     environment:
       - DATABASE_URL=postgres://postgres:password@database:5432/postgres
+      - DEFAULT_URL=https://holis.com
     depends_on:
       - database
   database:
