@@ -1,7 +1,9 @@
 class ShortenedUrl < ApplicationRecord
   HOST_URL = "#{ENV['DEFAULT_URL']}".freeze
 
+  acts_as_punchable
   validates_presence_of :full_url
+  validates :full_url, url: true
 
   before_create :set_code_url, :build_shortened_url
 
