@@ -1,18 +1,22 @@
-<h1>Shortened URL's</h1>
-
-<table>
-  <tr>
-    <th>Full URL</th>
-    <th>Shortened Link</th>
-    <th>Visit Count</th>
-  </tr>
-  <% @shortened_urls.each do |shortened_url| %>
-  <tr>
-    <td><%= shortened_url.full_url %></td>
-    <td><%= link_to shortened_url.shortened_url, shortened_url.shortened_url %></td>
-    <td><%= shortened_url.hits %></td>
-  </tr>
-  <% end %>
-</table>
-
-<%= link_to 'Short another URL', root_path %>
+<div class="container">
+  <div class="row">
+    <h1>Shortened URL's</h1>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <tr>
+        <th>Full URL</th>
+        <th>Shortened Link</th>
+        <th>Visit Count</th>
+      </tr>
+      <% @shortened_urls.each do |shortened_url| %>
+      <tr>
+        <td><%= shortened_url.full_url %></td>
+        <td><%= link_to shortened_url.shortened_url, shortened_url.shortened_url %></td>
+        <td><%= shortened_url.hits %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= link_to 'Short another URL', root_path, class: 'btn btn-primary' %>
+</div>
