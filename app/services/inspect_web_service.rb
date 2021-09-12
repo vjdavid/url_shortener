@@ -1,7 +1,7 @@
 class InspectWebService
   include Interactor
 
-  delegate :full_url, to: :context
+  delegate :full_url, :short_link, to: :context
 
   def call
     get_title
@@ -27,5 +27,11 @@ class InspectWebService
   def get_title
     return unless parse_request
     parse_request.title
+  end
+
+  def save_title
+    short_link.title = get_title
+    context.fail! message: short_link.errors.messages.to_s unless short_link.valid?
+    shot_link.save
   end
 end
