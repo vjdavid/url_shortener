@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root 'home#index'
 
@@ -7,4 +9,6 @@ Rails.application.routes.draw do
   resources :shortened_urls do
     get 'home', on: :collection
   end
+
+  mount Sidekiq::Web => '/sidekiq'
 end
