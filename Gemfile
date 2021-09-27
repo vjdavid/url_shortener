@@ -29,12 +29,16 @@ gem 'validate_url'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
+
 gem 'bootsnap', '>= 1.4.4', require: false
 # To track items 
 gem 'punching_bag'
 gem 'faraday'
 gem 'interactor'
 gem 'sidekiq'
+
+# To allow render JSON API Specification
+gem 'jsonapi-resources', '~> 0.10.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
