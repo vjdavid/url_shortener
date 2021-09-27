@@ -33,8 +33,6 @@ services:
   sidekiq:
     build: .
     command: bundle exec sidekiq
-    volumes:
-      - .:/usr/src/app/
     depends_on:
       - database
       - redis
