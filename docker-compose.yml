@@ -39,6 +39,7 @@ services:
       - database
       - redis
     environment:
+      - DATABASE_URL=postgres://postgres:password@database:5432/postgres
       - REDIS_URL_SIDEKIQ=redis://redis:6379/1
 
 volumes:
