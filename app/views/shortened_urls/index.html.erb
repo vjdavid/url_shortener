@@ -8,12 +8,14 @@
         <th>Full URL</th>
         <th>Shortened Link</th>
         <th>Visit Count</th>
+        <th>Website Title</th>
       </tr>
       <% @shortened_urls.each do |shortened_url| %>
       <tr>
         <td><%= shortened_url.full_url %></td>
         <td><%= link_to shortened_url.shortened_url, shortened_url.shortened_url %></td>
         <td><%= shortened_url.hits %></td>
+        <td><%= shortened_url.page_title if shortened_url.page_title.present? %></td>
       </tr>
       <% end %>
     </table>
