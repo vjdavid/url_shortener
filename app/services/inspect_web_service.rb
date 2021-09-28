@@ -11,7 +11,7 @@ class InspectWebService
 
   def perform_request
     response = Faraday.get(full_url)
-    context.fail! message: 'There was an error with the given url' unless response.success?
+    context.fail! message: "There was an error with the given url, status: #{response.status}" unless response.success?
     response
   end
 
