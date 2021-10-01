@@ -18,9 +18,13 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def create
-    url = ShortenedUrl.short_or_create_from_url(params[:full_url])
+    @url = ShortenedUrl.new(params[:full_url])
 
-    redirect_to shortened_urls_path, notice: "Your new URL is #{url.shortened_url}"
+    if @url.save
+      redirect_to shortened_urls_path, notice: "Your new URL is #{@url.shortened_url}"
+    else
+      redirect_to shortened_urls_path, error: "#{@url.errors}"
+    end
   end
 
   private
