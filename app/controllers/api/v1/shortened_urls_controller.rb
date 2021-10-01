@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ShortenedUrlsController < JSONAPI::ResourceController
+    class ShortenedUrlsController < ApiController
     end
   end
 end
