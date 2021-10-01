@@ -4,15 +4,19 @@ class InspectWebService
   delegate :full_url, to: :context
 
   def call
+    context.fail!(message: 'There was an error with the given url') unless perform_request.status == 200
     context.title = get_title_tag_content
   end
 
   private
 
   def perform_request
-    response = Faraday.get(full_url)
-    context.fail! message: "There was an error with the given url, status: #{response.status}" unless response.success?
-    response
+    @perform_request ||= begin
+        Faraday.get(full_url)
+      rescue Faraday::Error => e
+        context.fail!(message: e)
+    end
+    @perform_request
   end
 
   def parse_request
